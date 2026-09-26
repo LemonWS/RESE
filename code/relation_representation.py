@@ -1,27 +1,4 @@
-"""Unified relation-representation registry for Rel-ESE.
 
-This module is the compatibility layer used by the existing statistical
-pipeline.  Individual geometries live in separate files so they can evolve
-independently and future anomaly-detection work can add new representations
-without touching pairwise model selection or the graph solver.
-
-Canonical relation form
------------------------
-    r_ij,t = T(y_i,t) - T(y_j,t)
-
-Available geometries
---------------------
-- auto       : non-negative -> log_ratio; any negative -> asinh
-- log_ratio  : multiplicative / scale-invariant positive geometry
-- asinh      : signed, smooth, linear near zero and log-like for large |y|
-- signed_log : signed logarithmic compression
-- additive   : identity / absolute-difference geometry
-
-The scaler modules (none/zscore/robust) are deliberately separate from this
-geometry layer.  They are provided as stable extension interfaces, but the
-current forecasting pipeline leaves scaling disabled by default so the legacy
-ESE semantics are preserved.
-"""
 from __future__ import annotations
 
 from dataclasses import dataclass
