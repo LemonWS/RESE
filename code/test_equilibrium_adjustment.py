@@ -1,8 +1,4 @@
-"""Regression tests for equilibrium_adjustment_v1.py.
 
-Run:
-    python test_equilibrium_adjustment_v1.py
-"""
 from __future__ import annotations
 
 import numpy as np
