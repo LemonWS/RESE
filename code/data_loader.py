@@ -1,27 +1,4 @@
-"""
 
-Unified data loader for multi-system equilibrium experiments.
-
-Expected data structure
------------------------
-Rows    : time/date observations
-Columns : individual systems
-
-Example
--------
-Date, S1, S2, S3, ..., SN
-t1,   y11, y21, y31, ..., yN1
-t2,   y12, y22, y32, ..., yN2
-...
-
-The returned target matrix has shape
-
-    Y.shape = (T, N)
-
-where
-    T = number of time observations
-    N = number of systems.
-"""
 
 from pathlib import Path
 from typing import Optional, Tuple, List
