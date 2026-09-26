@@ -1,45 +1,4 @@
-"""equilibrium_adjustment_v2.py
-================================
 
-Partial equilibrium adjustment for Rel-ESE.
-
-This module deliberately separates two concepts:
-
-1. ``EquilibriumResult`` from ``equilibrium_solver_v3.py`` is the predicted
-   relational equilibrium target ES.
-2. The finite-horizon forecast state need not equal that target immediately.
-   It may remain partially displaced from ES because adjustment takes time.
-
-Let
-
-    v_t      = centered latent representation of the current observed state,
-    u*       = latent equilibrium target returned by Rel-ESE,
-    alpha_h  = fraction of the initial disequilibrium removed by horizon h.
-
-The adjusted finite-horizon state is
-
-    v_hat(t+h) = (1-alpha_h) v_t + alpha_h u*.
-
-Equivalently, under a per-step persistence parameter rho in [0,1],
-
-    alpha_h = 1 - rho**h,
-    v_hat(t+h) = u* + rho**h (v_t-u*).
-
-Important distinction
----------------------
-This is NOT a numerical convergence loop.  Forecasting stops at the requested
-horizon h.  A separate normalized disequilibrium ratio is reported only as a
-diagnostic of how close the finite-horizon state is to ES.
-
-Special cases
--------------
-alpha_h = 0  -> current-state persistence (no movement toward ES)
-alpha_h = 1  -> full-equilibrium Rel-ESE (the existing reconstruction)
-0<alpha_h<1 -> partial equilibrium adjustment
-
-The module is representation-aware because both the current state and the ES
-live in the same centered transformed coordinate used by the relation solver.
-"""
 from __future__ import annotations
 
 from dataclasses import dataclass
