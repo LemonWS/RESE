@@ -1,6 +1,6 @@
 # RESE
 
-Code for **Relation-based Equilibrium State Estimation (RESE)** for multi-system time-series forecasting.
+Code for **Relational Equilibrium State Estimation (RESE)** for multi-system time-series forecasting.
 
 This repository contains the statistical RESE implementation, including pairwise relation estimation, equilibrium-state estimation, magnitude forecasting, reconstruction, and multivariate benchmark evaluation.
 
