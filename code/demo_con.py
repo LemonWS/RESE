@@ -1,34 +1,4 @@
-"""demo_v12.py
-================
 
-Clean statistical Rel-ESE demo.
-
-This runner intentionally contains no neural-relation branch.  Neural teacher /
-student experiments remain in the dedicated ``demo_neural_*`` runner so the
-ordinary statistical demo is easy to inspect and debug.
-
-Pipeline
---------
-file -> data_loader.py
-     -> forecast_window_v1.py (input/output configuration)
-     -> automatic/manual relation geometry selection
-     -> pairwise_relation_v6.py
-     -> relation_matrix.py
-     -> equilibrium_solver_v3.py
-     -> equilibrium_refinement_v1.py (optional robust convergence)
-     -> predictor_v5.py
-     -> evaluation_v6.py
-     -> experiment_report_v5.py
-
-Automatic geometry
-------------------
-``representation='auto'`` scans the numeric dataset before fitting:
-- all observations >= 0 -> ``log_ratio``
-- any observation < 0   -> ``asinh``
-
-For formal paper experiments, explicitly setting the representation is still
-recommended so the experimental condition is fixed rather than data-driven.
-"""
 from __future__ import annotations
 
 import argparse
