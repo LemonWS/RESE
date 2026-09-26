@@ -1,47 +1,4 @@
-"""demo_multivariate_benchmark_fixed_v2.py
-=================================================
 
-Selection-locked multivariate benchmark runner for statistical RESE.
-
-Purpose
--------
-This demo is dedicated to direct comparison with fixed-model long-horizon
-benchmarks such as PatchTST/iTransformer/Crossformer.
-
-The key difference from ``demo_multivariate_benchmark_v5.py`` is that relation
-model selection, Null screening, relation reliability, and magnitude-family
-selection are performed ONCE using train+validation history only, before the
-test split begins.  During test evaluation, the selected statistical
-family/specification may be refitted on the past-only input window, but no
-candidate family comparison, persistence screening, or family substitution is
-performed using test-period history.
-
-Protocol
---------
-1. Train-only StandardScaler, identical to the ordinary benchmark runner.
-2. Relation geometry is resolved once from train data.
-3. At ``selection_origin = end_of_validation``:
-   - select one relation family/specification for every pair;
-   - decide Null/rejected pairs;
-   - freeze validation reliability weights;
-   - select one magnitude predictor family/specification.
-4. At every test origin:
-   - use exactly the latest ``input_length`` observations;
-   - refit ONLY the previously selected family/specification;
-   - never re-run candidate selection or Null screening;
-   - a locked relation that cannot be refitted becomes unavailable for that
-     window; it is NOT replaced by another family.
-5. Evaluate all channels in standardized M-setting:
-       mean((prediction - truth)^2) over windows x horizons x channels.
-
-This is intentionally called a *selection-locked rolling-refit* protocol rather
-than a frozen-parameter neural protocol.  It removes the principal source of
-test-time model-selection advantage while retaining the natural past-only
-re-estimation behavior of statistical models.
-
-For the strictest paper comparison, use all eligible test windows:
-    --max-test-windows 0 --test-stride 1
-"""
 
 from __future__ import annotations
 
