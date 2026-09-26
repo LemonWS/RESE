@@ -1,38 +1,3 @@
-"""
-forecast_window_v1.py
-=====================
-
-Shared input/output window configuration for statistical Rel-ESE.
-
-Current Rel-ESE forecasting semantics
--------------------------------------
-``output_length = H`` is the horizon-specific endpoint forecast:
-
-    history ending at t  ->  forecast at t + H
-
-Pairwise relation-model selection is configured separately from the requested
-output horizon.  The default history-based scheme selects a relation model from
-historical one-step rolling-origin performance and then uses that model for any
-requested forecast path.  A horizon-matched selection scheme is retained as an
-alternative for comparison and backward compatibility.
-
-Input-history modes
--------------------
-``expanding``
-    Candidate models use every observation available before each origin.
-
-``sliding``
-    Candidate models use exactly the most recent ``input_length`` observations
-    before each origin.
-
-``auto``
-    ``input_length is None`` -> expanding
-    ``input_length is set``  -> sliding
-
-This module is intentionally model-agnostic so pairwise relations, magnitude
-prediction, neural extensions, and future anomaly-detection code can reuse the
-same window semantics.
-"""
 
 from __future__ import annotations
 
