@@ -1,24 +1,3 @@
-"""
-experiment_report_v6.py
-=======================
-
-Experiment timing and reporting utilities for the history-driven ESE project.
-
-Separation of responsibilities
-------------------------------
-evaluation_v6.py
-    Defines accuracy / state / relation / consistency metrics.
-
-experiment_report_v2.py
-    Defines wall-clock timing containers and human-readable experiment reports.
-
-demo / experiment runner
-    Executes the algorithms and delegates timing/report presentation here.
-
-This keeps methodology modules free from printing/profiling logic and allows the
-same reporting code to be reused by demos, rolling-origin runners, statistical
-vs neural comparisons, and future benchmark scripts.
-"""
 
 from __future__ import annotations
 
