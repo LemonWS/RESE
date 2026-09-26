@@ -1,31 +1,4 @@
-"""
-pairwise_systems.py
 
-Construct unique pairwise combinations of systems from a
-multi-system time-series matrix.
-
-Input
------
-Y : np.ndarray, shape (T, N)
-
-    T = number of time observations
-    N = number of systems
-
-Columns correspond to systems.
-
-Output
-------
-Unique unordered system pairs
-
-    (i, j), i < j
-
-The number of pairs is
-
-    N(N - 1) / 2
-
-This module ONLY constructs system pairs.
-It does not estimate pairwise relationships.
-"""
 
 from dataclasses import dataclass
 from itertools import combinations
