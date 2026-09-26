@@ -1,48 +1,4 @@
-"""
-download_multivariate_benchmarks_v4.py
-======================================
 
-Download mainstream multivariate forecasting benchmarks, including the exact
-six benchmark families used in the ICLR 2023 Crossformer paper.
-
-Default set:
-    ETTh1, ETTh2, ETTm1, ETTm2,
-    weather (21-dim Autoformer/TSLib version),
-    ILI,
-    WTH (12-dim Informer/Crossformer version),
-    ECL (321-dim Crossformer version),
-    Traffic (862-dim)
-
-Important:
-- Crossformer used ETTh1, ETTm1, WTH, ECL, ILI, Traffic.
-- Crossformer's WTH is the *12-dimensional Informer WTH*, NOT the later
-  21-dimensional Autoformer/Time-Series-Library weather.csv.
-- Exchange Rate is intentionally omitted.
-
-Examples
---------
-Download the full default set:
-    python download_multivariate_benchmarks_v4.py
-
-Download exactly the Crossformer paper benchmarks:
-    python download_multivariate_benchmarks_v4.py --preset crossformer
-
-Download a compact set without ECL/Traffic:
-    python download_multivariate_benchmarks_v4.py --preset compact
-
-Download selected datasets:
-    python download_multivariate_benchmarks_v4.py --datasets ETTh1 WTH ILI
-
-Choose another output directory:
-    python download_multivariate_benchmarks_v4.py --output-dir data/benchmarks
-
-Notes
------
-- Uses only Python standard library.
-- Tries multiple public mirrors when available.
-- Existing files are kept unless --force is supplied.
-- Performs basic CSV header/shape validation.
-"""
 
 from __future__ import annotations
 
